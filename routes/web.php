@@ -18,6 +18,16 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
 Route::get('/auth/google', static fn() => Socialite::driver('google')->redirect());
 Route::get('/auth/callback', static function () {
     $googleUser = Socialite::driver('google')->user();
