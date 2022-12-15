@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\StoreController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/auth/google', static fn() => Socialite::driver('google')->redirect());
+Route::get('/auth/callback', static function () {
+    $googleUser = Socialite::driver('google')->user();
+
+    $user = User::updateOrCreate([
+        'google_id' => $googleUser->id,
+    ], [
+        'name' => $googleUser->name,
+        'email' => $googleUser->email,
+        'google_token' => $googleUser->token,
+        'google_refresh_token' => $googleUser->refreshToken,
+    ]);
+
+    Auth::login($user);
+
+    return redirect()->route('home');
 });

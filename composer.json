@@ -8,17 +8,23 @@
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
+        "laravel/jetstream": "^2.13",
         "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7"
+        "laravel/socialite": "^5.5",
+        "laravel/tinker": "^2.7",
+        "livewire/livewire": "^2.5",
+        "stevenmaguire/yelp-php": "^2.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
-        "laravel/sail": "^1.0.1",
+        "laravel/sail": "^1.16",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "psalm/plugin-laravel": "^2.0",
+        "spatie/laravel-ignition": "^1.0",
+        "vimeo/psalm": "^5.2"
     },
     "autoload": {
         "psr-4": {
