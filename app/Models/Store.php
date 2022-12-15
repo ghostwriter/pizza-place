@@ -12,16 +12,16 @@ class Store extends Model
 
     protected $fillable = [
         'name',
-        'location_id'
+//        'location_id'
     ];
 
     protected $casts = [
         'id' => 'int',
-        'location_id' => 'int'
+//        'location_id' => 'int'
     ];
 
-    public function location() : BelongsTo
-    {
-        return $this->belongsTo(Location::class);
-    }
+//    public function location() : BelongsTo
+//    {
+//        return $this->belongsTo(Location::class);
+//    }
 }
