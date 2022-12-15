@@ -18,6 +18,14 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
+if (env('APP_ENV') !== 'testing') {
+    Auth::loginUsingId(1);
+}
+
+Route::get('/', static fn() => view('welcome'));
+Route::resource('stores', StoreController::class);
+Route::resource('locations', LocationController::class);
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
